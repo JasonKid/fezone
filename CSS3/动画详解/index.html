@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>「CSS3 」动画详解</title>
+        <style>
+            @-webkit-keyframes exampleName {
+                from {
+                    -webkit-transform: rotateY(0deg);
+                    background: #000000;
+                }
+                50% {
+                    -webkit-transform: rotateY(180deg);
+                    background: #00fa7e;
+                }
+                to {
+                    -webkit-transform: rotateY(0deg);
+                    background: #008dff;
+                }
+            }
+
+            @-moz-keyframes exampleName {
+                from {
+                    -moz-transform: rotateY(0deg);
+                    background: #000000;
+                }
+                50% {
+                    -moz-transform: rotateY(180deg);
+                    background: #00fa7e;
+                }
+                to {
+                    -moz-transform: rotateY(0deg);
+                    background: #008dff;
+                }
+            }
+
+            @-o-keyframes exampleName {
+                from {
+                    -o-transform: rotateY(0deg);
+                    background: #000000;
+                }
+                50% {
+                    -o-transform: rotateY(180deg);
+                    background: #00fa7e;
+                }
+                to {
+                    -o-transform: rotateY(0deg);
+                    background: #008dff;
+                }
+            }
+
+            @keyframes exampleName {
+                from {
+                    -ms-transform: rotateY(0deg);
+                    transform: rotateY(0deg);
+                    background: #000000;
+                }
+                50% {
+                    -ms-transform: rotateY(180deg);
+                    transform: rotateY(180deg);
+                    background: #00fa7e;
+                }
+                to {
+                    -ms-transform: rotateY(0deg);
+                    transform: rotateY(0deg);
+                    background: #008dff;
+                }
+            }
+
+
+            #division {
+                width: 300px;
+                height: 100px;
+                font-size: 2em;
+                text-align: center;
+                line-height: 100px;
+                color: #FFF;
+                -webkit-animation: exampleName 5s linear 1s 1 normal;
+                -moz-animation: exampleName 5s linear 1s 1 normal;
+                -o-animation: exampleName 5s linear 1s 1 normal;
+                -webkit-animation-fill-mode: both;
+                -moz-animation-fill-mode: both;
+                -o-animation-fill-mode: both;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="division">FEZone</div>
+    </body>
+</html>
