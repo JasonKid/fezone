@@ -82,9 +82,36 @@
                 -moz-animation-fill-mode: both;
                 -o-animation-fill-mode: both;
             }
+
+            #division2 {
+                width: 300px;
+                height: 100px;
+                margin-top: 150px;
+                font-size: 2em;
+                text-align: center;
+                line-height: 100px;
+                color: #FFF;
+                background: #000;
+                -webkit-transition: -webkit-transform 3s linear 0s, background 2s linear 0s, color 2s linear 0s;
+                -moz-transition: -moz-transform 3s linear 0s, background 2s linear 0s, color 2s linear 0s;
+                -ms-transition: -ms-transform 3s linear 0s, background 2s linear 0s, color 2s linear 0s;
+                -o-transition: -o-transform 3s linear 0s, background 2s linear 0s, color 2s linear 0s;
+                transition: transform 3s linear 0s, background 2s linear 0s, color 2s linear 0s;
+            }
+
+            #division2:hover {
+                background: #cccdd1;
+                color: #000;
+                -webkit-transform: rotate(90deg);
+                -moz-transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
         </style>
     </head>
     <body>
-        <div id="division">FEZone</div>
+        <div id="division">Animation</div>
+        <div id="division2">Transition</div>
     </body>
 </html>
