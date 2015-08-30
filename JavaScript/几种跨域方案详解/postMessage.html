@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」四种跨域方式详解 - postMessage</title>
+</head>
+<body>
+<iframe id="iframe" width="480px" height="270px" src="http://jasonkid.github.io/fezone/"></iframe>
+<script>
+    var iframe = document.getElementById('iframe');
+    window.addEventListener('message', function(event) {
+        console.log(event);
+        event.source.postMessage('Message from parent page.', '*');
+    });
+</script>
+</body>
+</html>
