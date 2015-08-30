@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」四种跨域方式详解 - document.domain - iframe</title>
+</head>
+<body>
+    <p>这是iFrame</p>
+    <script>
+        /**
+         *  document.domain 默认是整个域名
+         *  所以不同 N 级域名的 iframe 是无法被获取的
+         *  我们将 iframe 的 document.domain 设置为域名的一级域名
+         */
+//        document.domain = x.x; // 替换为x.x之类的一级域名，但必须是当前domain的后缀。
+
+        function iframeFunc() {
+            console.log('Calling function successfully!');
+        }
+    </script>
+</body>
+</html>

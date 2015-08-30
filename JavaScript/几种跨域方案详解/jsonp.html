@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」四种跨域方式详解 - JSONP</title>
+</head>
+<body>
+    <script>
+        function getWeather(json) {
+            console.log(json);
+        }
+    </script>
+    <script src="http://e.163.com/jnewsWeather.json?callback=getWeather&cityId=101010100"></script>
+</body>
+</html>

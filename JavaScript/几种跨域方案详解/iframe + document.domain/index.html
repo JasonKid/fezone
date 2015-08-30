@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」四种跨域方式详解 - document.domain - index</title>
+</head>
+<body>
+    <iframe id="iframe" width="480px" height="270px" src="iframe.html"></iframe>
+    <script>
+        /**
+         * 在框架的父页面也要设置 document.domain
+         */
+//        document.domain = x.x; // 替换为x.x之类的一级域名，但必须是当前domain的后缀。
+
+        var iframe = document.getElementById('iframe');
+        iframe.onload = function(){
+            iframe.contentDocument.getElementsByTagName('body')[0].innerText = 'Text Changed!';
+            iframe.contentWindow.iframeFunc();
+        }
+    </script>
+</body>
+</html>
