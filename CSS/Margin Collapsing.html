@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「CSS 」Margin Collapsing - 外边距合并</title>
+    <style>
+        .case {
+            margin: 50px;
+            background: #cccdd1;
+
+            /* 保证 case 不互相影响，并且内容和外部环境无关 */
+            float: left;
+            clear: both;
+        }
+
+        p {
+            margin: 0 50px;
+            clear: both;
+        }
+    </style>
+
+    <style>
+        .margin-box {
+            width: 50px;
+            height: 50px;
+            margin: 50px;
+            background: #fae900;
+        }
+
+        .wrapper {
+            margin: 25px;
+            background: #008dff;
+        }
+    </style>
+</head>
+<body>
+    <p>[相邻的同胞元素]</p>
+    <div class="case">
+        <div class="margin-box"></div>
+        <div class="margin-box"></div>
+        <div class="margin-box"></div>
+    </div>
+
+    <p>[父元素与子元素]</p>
+    <div class="case">
+        <div class="wrapper" style="margin-top: 0;">
+            <div class="margin-box"></div>
+        </div>
+    </div>
+
+    <p>[空元素]</p>
+    <div class="case">
+        <div class="wrapper"></div>
+    </div>
+
+</body>
+</html>
