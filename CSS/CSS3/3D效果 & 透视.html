@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「CSS3 」动画详解</title>
+    <style>
+        .case {
+            margin: 50px;
+            position: relative;
+
+            /* 保证 case 不互相影响，并且内容和外部环境无关 */
+            float: left;
+            clear: both;
+        }
+
+        .case > div {
+            float: left;
+            margin: 50px;
+        }
+    </style>
+
+    <style>
+        .preserve-3d {
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .perspective {
+            -webkit-perspective: 500px;
+            -moz-perspective: 500px;
+            -ms-perspective: 500px;
+            -o-perspective: 500px;
+            perspective: 500px;
+        }
+        .perspective-origin {
+            -webkit-perspective-origin: 0 0;
+            -moz-perspective-origin: 0 0;
+            -ms-perspective-origin: 0 0;
+            -o-perspective-origin: 0 0;
+            perspective-origin: 0 0;
+        }
+        .cube {
+            height: 100px;
+            width: 100px;
+
+            -webkit-transform: translateZ(50px);
+            -moz-transform: translateZ(50px);
+            -ms-transform: translateZ(50px);
+            -o-transform: translateZ(50px);
+            transform: rotateX(-20deg);
+        }
+
+        .cube div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            line-height: 100px;
+            text-align: center;
+            color: #FFF;
+            font-family: Arial;
+            font-size: 48px;
+        }
+
+        .cube .front {
+            -webkit-transform: translateZ(50px);
+            -moz-transform: translateZ(50px);
+            -ms-transform: translateZ(50px);
+            -o-transform: translateZ(50px);
+            transform: translateZ(50px);
+
+            background: red;
+        }
+        .cube .back {
+            -webkit-transform: translateZ(-50px);
+            -moz-transform: translateZ(-50px);
+            -ms-transform: translateZ(-50px);
+            -o-transform: translateZ(-50px);
+            transform: translateZ(-50px);
+
+            background: orange;
+        }
+        .cube .left {
+            -webkit-transform: translateX(-50px) rotateY(45deg);
+            -moz-transform: translateX(-50px) rotateY(45deg);
+            -ms-transform: translateX(-50px) rotateY(45deg);
+            -o-transform: translateX(-50px) rotateY(45deg);
+            transform: translateX(-50px) rotateY(45deg);
+
+            background: green;
+        }
+        .cube .right {
+            -webkit-transform: translateX(50px) rotateY(-45deg);
+            -moz-transform: translateX(50px) rotateY(-45deg);
+            -ms-transform: translateX(50px) rotateY(-45deg);
+            -o-transform: translateX(50px) rotateY(-45deg);
+            transform: translateX(50px) rotateY(-45deg);
+
+            background: gray;
+        }
+        .cube .top {
+            -webkit-transform: translateY(-50px) rotateX(90deg);
+            -moz-transform: translateY(-50px) rotateX(90deg);
+            -ms-transform: translateY(-50px) rotateX(90deg);
+            -o-transform: translateY(-50px) rotateX(90deg);
+            transform: translateY(-50px) rotateX(90deg);
+
+            background: blue;
+        }
+        .cube .bottom {
+            -webkit-transform: translateY(50px) rotateX(-90deg);
+            -moz-transform: translateY(50px) rotateX(-90deg);
+            -ms-transform: translateY(50px) rotateX(-90deg);
+            -o-transform: translateY(50px) rotateX(-90deg);
+            transform: translateY(50px) rotateX(-90deg);
+
+            background: darkviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="case">
+        <div class="cube">
+            <div class="front">Fr</div>
+            <div class="back">Ba</div>
+            <div class="left">Le</div>
+            <div class="right">Ri</div>
+            <div class="top">To</div>
+            <div class="bottom">Bo</div>
+        </div>
+
+        <div class="cube preserve-3d">
+            <div class="front">Fr</div>
+            <div class="back">Ba</div>
+            <div class="left">Le</div>
+            <div class="right">Ri</div>
+            <div class="top">To</div>
+            <div class="bottom">Bo</div>
+        </div>
+    </div>
+
+    <div class="case">
+        <div class="cube perspective">
+            <div class="front">Fr</div>
+            <div class="back">Ba</div>
+            <div class="left">Le</div>
+            <div class="right">Ri</div>
+            <div class="top">To</div>
+            <div class="bottom">Bo</div>
+        </div>
+
+        <div class="cube preserve-3d perspective">
+            <div class="front">Fr</div>
+            <div class="back">Ba</div>
+            <div class="left">Le</div>
+            <div class="right">Ri</div>
+            <div class="top">To</div>
+            <div class="bottom">Bo</div>
+        </div>
+    </div>
+
+    <div class="case">
+        <div class="cube perspective perspective-origin">
+            <div class="front">Fr</div>
+            <div class="back">Ba</div>
+            <div class="left">Le</div>
+            <div class="right">Ri</div>
+            <div class="top">To</div>
+            <div class="bottom">Bo</div>
+        </div>
+
+        <div class="cube preserve-3d perspective perspective-origin">
+            <div class="front">Fr</div>
+            <div class="back">Ba</div>
+            <div class="left">Le</div>
+            <div class="right">Ri</div>
+            <div class="top">To</div>
+            <div class="bottom">Bo</div>
+        </div>
+    </div>
+</body>
+</html>
