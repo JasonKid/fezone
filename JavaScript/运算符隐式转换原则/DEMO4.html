@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+<script>
+    var date = new Date();
+    date.toString = function() { return "This is 'toString' Method."; };
+    date.valueOf = function() { return 1; };
+
+    var obj2 = {
+        toString: function() { return "This is 'toString' Method."; },
+        valueOf: function() { return 3; }
+    };
+
+    console.log(date + obj2); // "This is 'toString' Method.3"
+    console.log(1 + obj2); // 4
+    console.log(obj2 + obj2); // 6
+
+</script>
+</body>
+</html>
