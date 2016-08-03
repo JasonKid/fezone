@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」操作数隐式类型转换</title>
+</head>
+<body>
+<script>
+    var obj = {
+        valueOf: function() {
+            return 18;
+        }
+    };
+    var obj2 = {
+        valueOf: function() {
+            return 19;
+        }
+    };
+
+    console.log(
+            1 - "2", // -1
+            "32" - "22", // 10
+            obj % 4, // 2
+            obj * obj2, // 342
+            "99b" * 10 // NaN
+    );
+</script>
+</body>
+</html>

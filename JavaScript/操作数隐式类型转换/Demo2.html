@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」操作数隐式类型转换</title>
+</head>
+<body>
+<script>
+    var obj = {
+        valueOf: function() {
+            return 18;
+        }
+    };
+
+    console.log(
+            1 <= "2", // true
+            "1" <= "a", // true
+            obj >= "17" // true
+    );
+</script>
+</body>
+</html>

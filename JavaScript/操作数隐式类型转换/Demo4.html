@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>「JavaScript」操作数隐式类型转换</title>
+</head>
+<body>
+<script>
+    var obj = {
+        toString: function() {
+            return "18s";
+        },
+        valueOf: undefined
+    };
+    var obj2 = {
+        toString: function() {
+            return "19b";
+        },
+        valueOf: function() {
+            return 19;
+        }
+    };
+
+    console.log(
+            obj + obj2, // "18s19"
+            obj2 + obj2 // 38
+    );
+</script>
+</body>
+</html>
