@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如何在动画属性改变时保持元素的状态不变 - 雪碧图动画时间状态控制</title>
+</head>
+<body>
+<!-- https://dribbble.com/shots/3227624-Ahoy-logo -->
+<style>
+    .walk-cycle-dell {
+        width: 800px;
+        height: 600px;
+        background: url(./walk-cycle-dell.png);
+        animation: walk-cycle-dell 0.92s steps(23) 0s infinite normal;
+    }
+
+    @keyframes walk-cycle-dell {
+        from {background-position: 0 0;}
+        to {background-position: -18400px 0;}
+    }
+</style>
+
+<div class="walk-cycle-dell"></div>
+<div style="width: 800px; text-align: center; margin-top: 10px;">
+    <button id="switchState">暂停</button>
+    <button id="switchDirection">切换播放方向</button>
+    <button id="speedUp">整体提速0.1s</button>
+    <button id="slowDown">整体降速0.1s</button>
+</div>
+
+<script>
+    var image = document.getElementsByClassName('walk-cycle-dell')[0];
+    var stateBtn = document.getElementById('switchState');
+    var directionBtn = document.getElementById('switchDirection');
+    var speedUpBtn = document.getElementById('speedUp');
+    var slowDownBtn = document.getElementById('slowDown');
+
+    var imageCs = getComputedStyle(image);
+    var singleImageWidth = 800;
+    var steps = 23;
+    var duration = 0.92;
+
+    stateBtn.addEventListener('click', function(e) {
+        if(imageCs.animationPlayState == 'paused') {
+            image.style.animationPlayState = 'running';
+
+            e.target.textContent = '暂停';
+        } else {
+            image.style.animationPlayState = 'paused';
+
+            e.target.textContent = '播放';
+        }
+    });
+
+    directionBtn.addEventListener('click', function(e) {
+        var curPos = - parseInt(imageCs.backgroundPositionX) / singleImageWidth;
+        var coe;
+
+        if(imageCs.animationDirection == 'reverse') {
+            image.style.animationDirection = 'normal';
+            coe = 1;
+        } else {
+            image.style.animationDirection = 'reverse';
+            coe = -1;
+        }
+
+        image.style.animationDelay = parseFloat(imageCs.animationDelay) + coe * (steps - curPos - 1 - curPos) * (duration / steps) + 's';
+    });
+
+    // TODO::时间同步问题待修复
+    speedUpBtn.addEventListener('click', function(e) {
+        image.style.animationDuration = parseFloat(imageCs.animationDuration) - 0.1 + 's';
+        duration -= 0.1;
+    });
+
+    slowDownBtn.addEventListener('click', function(e) {
+        image.style.animationDuration = parseFloat(imageCs.animationDuration) + 0.1 + 's';
+        duration += 0.1;
+    });
+</script>
+
+</body>
+</html>
