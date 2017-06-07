@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>「CSS3」ImageMagick - 从gif建立雪碧图动画 - Sprite Sheet Animation</title>
+    <style>
+        body {
+            font-size: 12px;
+        }
+
+        section {
+            width: 500px;
+            text-align: center;
+        }
+
+        section img {
+            box-shadow: 0 0 5px 0 #939393;
+        }
+
+        .ssa {
+            width: 60px;
+            height: 60px;
+            box-shadow: 0 0 5px 0 #939393;
+            margin: 10px auto;
+            background: url(stars.png);
+        }
+
+        @keyframes star {
+            from {background-position: 0;}
+            to {background-position: -1740px;}
+        }
+
+        #css3 {
+            animation: star 1000ms steps(29, end) 0ms infinite normal;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div><img src="./stars.gif" alt=""></div>
+        <span>GIF</span>
+    </section>
+
+    <section>--------</section>
+
+    <section>
+        <div class="ssa" id="css"></div>
+        <div>CSS版雪碧图动画</div>
+        <span>
+            <button id="cssPlay">播放/暂停</button>
+            <button id="cssSlowDown">-减速-</button>
+            <button id="cssSpeedUp">+加速+</button>
+            <button id="cssReverse">切换播放顺序</button>
+        </span>
+    </section>
+
+    <script>
+        let css = document.getElementById('css');
+        let cssPlay = document.getElementById('cssPlay');
+        let cssSlowDown = document.getElementById('cssSlowDown');
+        let cssSpeedUp = document.getElementById('cssSpeedUp');
+        let cssReverse = document.getElementById('cssReverse');
+
+        let xPos = 0;
+        let interval = 40;
+        let direction = -1; // -1: forward, 1: reverse
+
+        function cssAnimate() {
+            css.style.backgroundPosition = direction * (xPos += 60) % 1800 + 'px';
+        }
+
+        function resetInterval() {
+            clearInterval(timer);
+            timer = setInterval(cssAnimate, interval);
+        }
+
+        /* Initial timer setup */
+        let timer = setInterval(cssAnimate, interval);
+
+        cssPlay.addEventListener('click', function() {
+            if(timer) {
+                clearInterval(timer);
+                timer = undefined;
+            } else {
+                timer = setInterval(cssAnimate, interval);
+            }
+        });
+
+        cssSlowDown.addEventListener('click', function() {
+            if(interval + 10 >= 200) interval = 200;
+            else interval += 10;
+
+            resetInterval();
+        });
+
+        cssSpeedUp.addEventListener('click', function() {
+            if(interval - 10 <= 20) interval = 20;
+            else interval -= 10;
+
+            resetInterval();
+        });
+
+        cssReverse.addEventListener('click', function() {
+            if(direction === 1) direction = -1;
+            else direction = 1;
+
+            resetInterval();
+        });
+    </script>
+
+    <section>--------</section>
+
+    <section>
+        <div class="ssa" id="css3"></div>
+        <div>CSS3版雪碧图动画</div>
+        <span>
+            <button id="css3Play">播放/暂停</button>
+            <button id="css3SlowDown">-减速-</button>
+            <button id="css3SpeedUp">+加速+</button>
+            <button id="css3Reverse">切换播放顺序</button>
+        </span>
+    </section>
+
+    <script>
+        let css3 = document.getElementById('css3');
+        let css3Play = document.getElementById('css3Play');
+        let css3SlowDown = document.getElementById('css3SlowDown');
+        let css3SpeedUp = document.getElementById('css3SpeedUp');
+        let css3Reverse = document.getElementById('css3Reverse');
+
+        css3Play.addEventListener('click', function() {
+            if(getComputedStyle(css3).animationPlayState === 'running') {
+                css3.style.animationPlayState = 'paused';
+            } else {
+                css3.style.animationPlayState = 'running';
+            }
+        });
+
+        css3SlowDown.addEventListener('click', function() {
+            let duration = +getComputedStyle(css3).animationDuration.slice(0, -1);
+
+            if(duration + 0.3 >= 6) duration = 6;
+            else duration += 0.3;
+
+            css3.style.animationDuration = duration + 's';
+        });
+
+        css3SpeedUp.addEventListener('click', function() {
+            let duration = +getComputedStyle(css3).animationDuration.slice(0, -1);
+
+            if(duration - 0.3 <= 0.6) duration = 0.6;
+            else duration -= 0.3;
+
+            css3.style.animationDuration = duration + 's';
+        });
+
+        css3Reverse.addEventListener('click', function() {
+            if(getComputedStyle(css3).animationDirection === 'normal') {
+                css3.style.animationDirection = 'reverse';
+            } else {
+                css3.style.animationDirection = 'normal';
+            }
+        });
+    </script>
+</body>
+</html>
